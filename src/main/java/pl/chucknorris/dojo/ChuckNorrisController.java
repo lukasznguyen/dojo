@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jokes")
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "https://amazing-frangipane-139cb3.netlify.app/")
 public class ChuckNorrisController {
 
     private final ChuckNorrisService chuckNorrisService;
@@ -25,8 +25,8 @@ public class ChuckNorrisController {
     }
 
     @GetMapping("/random")
-    public ResponseEntity<String> getRandomJokeByCategory(@RequestParam(required = false) String category) {
-        ResponseEntity<String> response;
+    public ResponseEntity<Object> getRandomJokeByCategory(@RequestParam(required = false) String category) {
+        ResponseEntity<Object> response;
         try {
             response = ResponseEntity.ok(chuckNorrisService.getRandomJokeByCategory(category));
         } catch (BadCategoryException e) {

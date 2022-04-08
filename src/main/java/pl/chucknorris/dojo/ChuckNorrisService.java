@@ -20,14 +20,14 @@ public class ChuckNorrisService {
         return restTemplate.getForObject(EXTERNAL_URL + "/categories", ArrayList.class);
     }
 
-    public String getRandomJokeByCategory(String category) throws BadCategoryException {
+    public Object getRandomJokeByCategory(String category) throws BadCategoryException {
         if(category!=null) {
             List<String> categories = getCategories();
             if(!categories.contains(category)) {
                 throw new BadCategoryException("This category does not exists");
             }
-            return restTemplate.getForObject(EXTERNAL_URL + "/random?category=" + category, String.class);
+            return restTemplate.getForObject(EXTERNAL_URL + "/random?category=" + category, Object.class);
         }
-        return restTemplate.getForObject(EXTERNAL_URL + "/random", String.class);
+        return restTemplate.getForObject(EXTERNAL_URL + "/random", Object.class);
     }
 }
